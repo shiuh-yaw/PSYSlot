@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Book.ttf">
+            <string>CircularStd-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LeftTimeSlotCollectionViewCell" id="NdO-s4-8Eg" customClass="LeftTimeSlotCollectionViewCell" customModule="PSYSlot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbi-IM-5JM">
+                        <color key="backgroundColor" red="0.54509806630000002" green="0.54901963470000004" blue="0.56078433989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="88j-JL-527"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdI-Sz-xaV">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VAV-h7-H9y">
+                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="16"/>
+                                <color key="textColor" red="0.54509806630000002" green="0.54901963470000004" blue="0.56078433989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VAV-h7-H9y" secondAttribute="trailing" constant="4" id="NPq-vh-DsH"/>
+                            <constraint firstAttribute="bottom" secondItem="VAV-h7-H9y" secondAttribute="bottom" id="mvn-Ex-DK1"/>
+                            <constraint firstItem="VAV-h7-H9y" firstAttribute="top" secondItem="bdI-Sz-xaV" secondAttribute="top" id="sQ4-v8-upe"/>
+                            <constraint firstItem="VAV-h7-H9y" firstAttribute="leading" secondItem="bdI-Sz-xaV" secondAttribute="leading" constant="4" id="tDu-yl-NFq"/>
+                            <constraint firstAttribute="height" constant="24" id="zDr-L9-Wmr"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-bV-NIq">
+                        <color key="backgroundColor" red="0.87843137979507446" green="0.89803922176361084" blue="0.92549020051956177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="QnI-RY-2p5"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbQ-Ao-cKw">
+                        <color key="backgroundColor" red="0.87843137979507446" green="0.89803922176361084" blue="0.92549020051956177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="GFS-TY-gDE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LbQ-Ao-cKw" firstAttribute="top" secondItem="NdO-s4-8Eg" secondAttribute="top" id="3n9-vx-Jcd"/>
+                <constraint firstItem="fRY-bV-NIq" firstAttribute="top" secondItem="bdI-Sz-xaV" secondAttribute="bottom" id="C5w-6R-BEr"/>
+                <constraint firstItem="LbQ-Ao-cKw" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" id="CgL-Sx-59y"/>
+                <constraint firstAttribute="trailing" secondItem="fRY-bV-NIq" secondAttribute="trailing" id="Hdp-9W-AYH"/>
+                <constraint firstItem="Hbi-IM-5JM" firstAttribute="top" secondItem="NdO-s4-8Eg" secondAttribute="top" id="M8S-FM-ktL"/>
+                <constraint firstAttribute="trailing" secondItem="bdI-Sz-xaV" secondAttribute="trailing" constant="1" id="O6Y-Qc-AQC"/>
+                <constraint firstAttribute="trailing" secondItem="LbQ-Ao-cKw" secondAttribute="trailing" id="Zbk-ds-bbQ"/>
+                <constraint firstItem="Hbi-IM-5JM" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" id="niv-Kt-VdR"/>
+                <constraint firstItem="fRY-bV-NIq" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" constant="1" id="rcZ-IS-ObB"/>
+                <constraint firstItem="bdI-Sz-xaV" firstAttribute="top" secondItem="NdO-s4-8Eg" secondAttribute="top" id="v35-JZ-bi8"/>
+                <constraint firstItem="bdI-Sz-xaV" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" constant="1" id="yr9-bk-jL6"/>
+                <constraint firstAttribute="bottom" secondItem="Hbi-IM-5JM" secondAttribute="bottom" id="z5o-2h-onb"/>
+            </constraints>
+            <connections>
+                <outlet property="timeLabel" destination="VAV-h7-H9y" id="0IB-Fy-eYm"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

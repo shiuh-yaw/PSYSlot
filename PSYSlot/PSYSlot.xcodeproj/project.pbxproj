@@ -15,6 +15,13 @@
 		21C715A81DD02800005A6939 /* PSYSlotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715A71DD02800005A6939 /* PSYSlotTests.swift */; };
 		21C715B31DD02800005A6939 /* PSYSlotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715B21DD02800005A6939 /* PSYSlotUITests.swift */; };
 		21C715C21DD0289C005A6939 /* PSYSlotGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715C11DD0289C005A6939 /* PSYSlotGestureRecognizer.swift */; };
+		21CEE9001DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21CEE8FE1DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib */; };
+		21CEE9011DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21CEE8FF1DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib */; };
+		21CEE9041DD0C33A006BA64C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9031DD0C33A006BA64C /* Schedule.swift */; };
+		21CEE9071DD0C581006BA64C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9061DD0C581006BA64C /* DateExtension.swift */; };
+		21CEE90A1DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9081DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift */; };
+		21CEE90B1DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */; };
+		56A2187A06912FE3C019CF3F /* Pods_PSYSlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966E7191D740C5C5B84DAC2D /* Pods_PSYSlot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,15 @@
 		21C715B21DD02800005A6939 /* PSYSlotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSYSlotUITests.swift; sourceTree = "<group>"; };
 		21C715B41DD02800005A6939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C715C11DD0289C005A6939 /* PSYSlotGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSYSlotGestureRecognizer.swift; sourceTree = "<group>"; };
+		21CEE8FE1DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftTimeSlotCollectionViewCell.xib; sourceTree = "<group>"; };
+		21CEE8FF1DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightTimeSlotCollectionViewCell.xib; sourceTree = "<group>"; };
+		21CEE9031DD0C33A006BA64C /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		21CEE9061DD0C581006BA64C /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		21CEE9081DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
+		21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightTimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
+		966E7191D740C5C5B84DAC2D /* Pods_PSYSlot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSYSlot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D15BB0C1752FA01B5E36D460 /* Pods-PSYSlot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSYSlot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot.debug.xcconfig"; sourceTree = "<group>"; };
+		E9A2306EF5254BC82B3D885C /* Pods-PSYSlot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSYSlot.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A2187A06912FE3C019CF3F /* Pods_PSYSlot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,8 @@
 				21C715A61DD02800005A6939 /* PSYSlotTests */,
 				21C715B11DD02800005A6939 /* PSYSlotUITests */,
 				21C715901DD02800005A6939 /* Products */,
+				37DEC51ECF7AA13740433D54 /* Pods */,
+				323D7F4993C6A41BCBD4AD1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +118,9 @@
 		21C715911DD02800005A6939 /* PSYSlot */ = {
 			isa = PBXGroup;
 			children = (
+				21CEE9051DD0C55D006BA64C /* Extension */,
+				21CEE9021DD0C325006BA64C /* Model */,
+				21CEE8FD1DD0BE9F006BA64C /* View */,
 				21C715C01DD02852005A6939 /* Gesture */,
 				21C715921DD02800005A6939 /* AppDelegate.swift */,
 				21C715941DD02800005A6939 /* ViewController.swift */,
@@ -136,6 +158,50 @@
 			path = Gesture;
 			sourceTree = "<group>";
 		};
+		21CEE8FD1DD0BE9F006BA64C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21CEE9081DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift */,
+				21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */,
+				21CEE8FE1DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib */,
+				21CEE8FF1DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		21CEE9021DD0C325006BA64C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21CEE9031DD0C33A006BA64C /* Schedule.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		21CEE9051DD0C55D006BA64C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				21CEE9061DD0C581006BA64C /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		323D7F4993C6A41BCBD4AD1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				966E7191D740C5C5B84DAC2D /* Pods_PSYSlot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		37DEC51ECF7AA13740433D54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D15BB0C1752FA01B5E36D460 /* Pods-PSYSlot.debug.xcconfig */,
+				E9A2306EF5254BC82B3D885C /* Pods-PSYSlot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21C715B71DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlot" */;
 			buildPhases = (
+				85B01470E672B013D323EF51 /* [CP] Check Pods Manifest.lock */,
 				21C7158B1DD02800005A6939 /* Sources */,
 				21C7158C1DD02800005A6939 /* Frameworks */,
 				21C7158D1DD02800005A6939 /* Resources */,
+				1EF6DDFFF8DD3F22D8291BAB /* [CP] Embed Pods Frameworks */,
+				EDF658D41E3C4C03F4D004F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,7 +314,9 @@
 			files = (
 				21C7159D1DD02800005A6939 /* LaunchScreen.storyboard in Resources */,
 				21C7159A1DD02800005A6939 /* Assets.xcassets in Resources */,
+				21CEE9001DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib in Resources */,
 				21C715981DD02800005A6939 /* Main.storyboard in Resources */,
+				21CEE9011DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,13 +336,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1EF6DDFFF8DD3F22D8291BAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85B01470E672B013D323EF51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EDF658D41E3C4C03F4D004F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		21C7158B1DD02800005A6939 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				21C715951DD02800005A6939 /* ViewController.swift in Sources */,
+				21CEE9071DD0C581006BA64C /* DateExtension.swift in Sources */,
+				21CEE90A1DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift in Sources */,
+				21CEE90B1DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift in Sources */,
 				21C715931DD02800005A6939 /* AppDelegate.swift in Sources */,
+				21CEE9041DD0C33A006BA64C /* Schedule.swift in Sources */,
 				21C715C21DD0289C005A6939 /* PSYSlotGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +545,7 @@
 		};
 		21C715B81DD02800005A6939 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D15BB0C1752FA01B5E36D460 /* Pods-PSYSlot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PSYSlot/Info.plist;
@@ -434,6 +558,7 @@
 		};
 		21C715B91DD02800005A6939 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9A2306EF5254BC82B3D885C /* Pods-PSYSlot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PSYSlot/Info.plist;
@@ -517,6 +642,7 @@
 				21C715B91DD02800005A6939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21C715BA1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +651,7 @@
 				21C715BC1DD02800005A6939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21C715BD1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +660,7 @@
 				21C715BF1DD02800005A6939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
