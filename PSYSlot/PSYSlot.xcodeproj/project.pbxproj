@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21C715931DD02800005A6939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715921DD02800005A6939 /* AppDelegate.swift */; };
+		21C715951DD02800005A6939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715941DD02800005A6939 /* ViewController.swift */; };
+		21C715981DD02800005A6939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C715961DD02800005A6939 /* Main.storyboard */; };
+		21C7159A1DD02800005A6939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21C715991DD02800005A6939 /* Assets.xcassets */; };
+		21C7159D1DD02800005A6939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C7159B1DD02800005A6939 /* LaunchScreen.storyboard */; };
+		21C715A81DD02800005A6939 /* PSYSlotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715A71DD02800005A6939 /* PSYSlotTests.swift */; };
+		21C715B31DD02800005A6939 /* PSYSlotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715B21DD02800005A6939 /* PSYSlotUITests.swift */; };
+		21C715C21DD0289C005A6939 /* PSYSlotGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715C11DD0289C005A6939 /* PSYSlotGestureRecognizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21C715A41DD02800005A6939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21C715871DD02800005A6939 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21C7158E1DD02800005A6939;
+			remoteInfo = PSYSlot;
+		};
+		21C715AF1DD02800005A6939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21C715871DD02800005A6939 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21C7158E1DD02800005A6939;
+			remoteInfo = PSYSlot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		21C7158F1DD02800005A6939 /* PSYSlot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSYSlot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21C715921DD02800005A6939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		21C715941DD02800005A6939 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21C715971DD02800005A6939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		21C715991DD02800005A6939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21C7159C1DD02800005A6939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		21C7159E1DD02800005A6939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21C715A31DD02800005A6939 /* PSYSlotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSYSlotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21C715A71DD02800005A6939 /* PSYSlotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSYSlotTests.swift; sourceTree = "<group>"; };
+		21C715A91DD02800005A6939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21C715AE1DD02800005A6939 /* PSYSlotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSYSlotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21C715B21DD02800005A6939 /* PSYSlotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSYSlotUITests.swift; sourceTree = "<group>"; };
+		21C715B41DD02800005A6939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21C715C11DD0289C005A6939 /* PSYSlotGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSYSlotGestureRecognizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		21C7158C1DD02800005A6939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C715A01DD02800005A6939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C715AB1DD02800005A6939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		21C715861DD02800005A6939 = {
+			isa = PBXGroup;
+			children = (
+				21C715911DD02800005A6939 /* PSYSlot */,
+				21C715A61DD02800005A6939 /* PSYSlotTests */,
+				21C715B11DD02800005A6939 /* PSYSlotUITests */,
+				21C715901DD02800005A6939 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		21C715901DD02800005A6939 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21C7158F1DD02800005A6939 /* PSYSlot.app */,
+				21C715A31DD02800005A6939 /* PSYSlotTests.xctest */,
+				21C715AE1DD02800005A6939 /* PSYSlotUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		21C715911DD02800005A6939 /* PSYSlot */ = {
+			isa = PBXGroup;
+			children = (
+				21C715C01DD02852005A6939 /* Gesture */,
+				21C715921DD02800005A6939 /* AppDelegate.swift */,
+				21C715941DD02800005A6939 /* ViewController.swift */,
+				21C715961DD02800005A6939 /* Main.storyboard */,
+				21C715991DD02800005A6939 /* Assets.xcassets */,
+				21C7159B1DD02800005A6939 /* LaunchScreen.storyboard */,
+				21C7159E1DD02800005A6939 /* Info.plist */,
+			);
+			path = PSYSlot;
+			sourceTree = "<group>";
+		};
+		21C715A61DD02800005A6939 /* PSYSlotTests */ = {
+			isa = PBXGroup;
+			children = (
+				21C715A71DD02800005A6939 /* PSYSlotTests.swift */,
+				21C715A91DD02800005A6939 /* Info.plist */,
+			);
+			path = PSYSlotTests;
+			sourceTree = "<group>";
+		};
+		21C715B11DD02800005A6939 /* PSYSlotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				21C715B21DD02800005A6939 /* PSYSlotUITests.swift */,
+				21C715B41DD02800005A6939 /* Info.plist */,
+			);
+			path = PSYSlotUITests;
+			sourceTree = "<group>";
+		};
+		21C715C01DD02852005A6939 /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+				21C715C11DD0289C005A6939 /* PSYSlotGestureRecognizer.swift */,
+			);
+			path = Gesture;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		21C7158E1DD02800005A6939 /* PSYSlot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21C715B71DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlot" */;
+			buildPhases = (
+				21C7158B1DD02800005A6939 /* Sources */,
+				21C7158C1DD02800005A6939 /* Frameworks */,
+				21C7158D1DD02800005A6939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PSYSlot;
+			productName = PSYSlot;
+			productReference = 21C7158F1DD02800005A6939 /* PSYSlot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		21C715A21DD02800005A6939 /* PSYSlotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21C715BA1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotTests" */;
+			buildPhases = (
+				21C7159F1DD02800005A6939 /* Sources */,
+				21C715A01DD02800005A6939 /* Frameworks */,
+				21C715A11DD02800005A6939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21C715A51DD02800005A6939 /* PBXTargetDependency */,
+			);
+			name = PSYSlotTests;
+			productName = PSYSlotTests;
+			productReference = 21C715A31DD02800005A6939 /* PSYSlotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		21C715AD1DD02800005A6939 /* PSYSlotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21C715BD1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotUITests" */;
+			buildPhases = (
+				21C715AA1DD02800005A6939 /* Sources */,
+				21C715AB1DD02800005A6939 /* Frameworks */,
+				21C715AC1DD02800005A6939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21C715B01DD02800005A6939 /* PBXTargetDependency */,
+			);
+			name = PSYSlotUITests;
+			productName = PSYSlotUITests;
+			productReference = 21C715AE1DD02800005A6939 /* PSYSlotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		21C715871DD02800005A6939 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Shiuh Yaw Phang";
+				TargetAttributes = {
+					21C7158E1DD02800005A6939 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					21C715A21DD02800005A6939 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 21C7158E1DD02800005A6939;
+					};
+					21C715AD1DD02800005A6939 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 21C7158E1DD02800005A6939;
+					};
+				};
+			};
+			buildConfigurationList = 21C7158A1DD02800005A6939 /* Build configuration list for PBXProject "PSYSlot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 21C715861DD02800005A6939;
+			productRefGroup = 21C715901DD02800005A6939 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				21C7158E1DD02800005A6939 /* PSYSlot */,
+				21C715A21DD02800005A6939 /* PSYSlotTests */,
+				21C715AD1DD02800005A6939 /* PSYSlotUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		21C7158D1DD02800005A6939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21C7159D1DD02800005A6939 /* LaunchScreen.storyboard in Resources */,
+				21C7159A1DD02800005A6939 /* Assets.xcassets in Resources */,
+				21C715981DD02800005A6939 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C715A11DD02800005A6939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C715AC1DD02800005A6939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		21C7158B1DD02800005A6939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21C715951DD02800005A6939 /* ViewController.swift in Sources */,
+				21C715931DD02800005A6939 /* AppDelegate.swift in Sources */,
+				21C715C21DD0289C005A6939 /* PSYSlotGestureRecognizer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C7159F1DD02800005A6939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21C715A81DD02800005A6939 /* PSYSlotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21C715AA1DD02800005A6939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21C715B31DD02800005A6939 /* PSYSlotUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		21C715A51DD02800005A6939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21C7158E1DD02800005A6939 /* PSYSlot */;
+			targetProxy = 21C715A41DD02800005A6939 /* PBXContainerItemProxy */;
+		};
+		21C715B01DD02800005A6939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21C7158E1DD02800005A6939 /* PSYSlot */;
+			targetProxy = 21C715AF1DD02800005A6939 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		21C715961DD02800005A6939 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				21C715971DD02800005A6939 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		21C7159B1DD02800005A6939 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				21C7159C1DD02800005A6939 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		21C715B51DD02800005A6939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		21C715B61DD02800005A6939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		21C715B81DD02800005A6939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PSYSlot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		21C715B91DD02800005A6939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PSYSlot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		21C715BB1DD02800005A6939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PSYSlotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PSYSlot.app/PSYSlot";
+			};
+			name = Debug;
+		};
+		21C715BC1DD02800005A6939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PSYSlotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PSYSlot.app/PSYSlot";
+			};
+			name = Release;
+		};
+		21C715BE1DD02800005A6939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = PSYSlotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PSYSlot;
+			};
+			name = Debug;
+		};
+		21C715BF1DD02800005A6939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = PSYSlotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaw.PSYSlotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PSYSlot;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		21C7158A1DD02800005A6939 /* Build configuration list for PBXProject "PSYSlot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21C715B51DD02800005A6939 /* Debug */,
+				21C715B61DD02800005A6939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21C715B71DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21C715B81DD02800005A6939 /* Debug */,
+				21C715B91DD02800005A6939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		21C715BA1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21C715BB1DD02800005A6939 /* Debug */,
+				21C715BC1DD02800005A6939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		21C715BD1DD02800005A6939 /* Build configuration list for PBXNativeTarget "PSYSlotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21C715BE1DD02800005A6939 /* Debug */,
+				21C715BF1DD02800005A6939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 21C715871DD02800005A6939 /* Project object */;
+}
