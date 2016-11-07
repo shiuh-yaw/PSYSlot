@@ -18,17 +18,17 @@ enum PSYBorderType: Int {
 }
 
 class PSYSlotGestureRecognizer: UIGestureRecognizer {
-
+    
     let kSpeedMultiplier: CGFloat = 0.2
     let kSecond: CGFloat = 60.0
     let kTolerence:CGFloat = 25.0
     let kExtended:CGFloat = 25.0
-
+    
     // This minimum required duration the user has to press donw on the view to start the gesture.
     // The default value is 0.5 seconds, similar to UILongPressGestureRecognizer.
     public var minimumPressDuration: TimeInterval = 0.5
     
-    // The required distance in points the user has to move his finger to start the drag gesture. 
+    // The required distance in points the user has to move his finger to start the drag gesture.
     // The default value is 0 points
     public var minimumMovement: CGFloat = 0
     
@@ -36,7 +36,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     // The default value is 10 points, similar to UILongPressGestureRecognizer
     public var maximumMovement: CGFloat = 10
     
-    // A rectangle in the gesture recognizer's view's coordinate system. Touches outside of this frame will be ignored. 
+    // A rectangle in the gesture recognizer's view's coordinate system. Touches outside of this frame will be ignored.
     public var frame: CGRect {
         get {
             guard let v = view else {
@@ -62,11 +62,11 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     public var allowHorizontalScrolling = true
     
     public var allowTopBorderDragging = true
-
+    
     public var allowBottomBorderDragging = true
-
+    
     public var allowLeftBorderDragging = true
-
+    
     public var allowRightBorderDragging = true
     
     // The autoScrollInsets defines how close tot he scrollview's edge auto-scrolling will be started.
@@ -78,7 +78,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     private var amountScrolled: CGPoint = CGPoint.zero
     
     private var scrollSpeed: CGPoint = CGPoint.zero
-
+    
     private var startLocation: CGPoint?
     
     private var startContentOffset: CGPoint?
@@ -97,6 +97,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     
     private var types: PSYBorderType = .none
     private var matches: [PSYBorderType] = [PSYBorderType]()
+    private var originalFrame: CGRect?
 
     override init(target: Any?, action: Selector?) {
         
@@ -141,10 +142,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     
     @objc private func holdTimerFired(timer: Timer) {
         
-//        holding = false
-        if canBeginGesture() {
-            self.state = .began
-        }
+        //        holding = false
     }
     
     private func canBeginGesture() -> Bool {
@@ -161,16 +159,16 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     func tearDown() {
         
         endScrolling()
-        if holdTimer == nil {
-            return
-        }
-        holdTimer!.invalidate()
-        holdTimer = nil
+//        if holdTimer == nil {
+//            return
+//        }
+//        holdTimer!.invalidate()
+//        holdTimer = nil
     }
     
     func gestureRecognizerReset() {
         
-//        holding = false
+        //        holding = false
         scrolling = false
         translationInWindow = .zero
         amountScrolled = .zero
@@ -273,49 +271,50 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
         }
         startLocation = touch.location(in: nil)
         startContentOffset = scrollView.contentOffset
-//        holding = true
-//        holdTimer = Timer.scheduledTimer(timeInterval: minimumPressDuration,
-//                                         target: self,
-//                                         selector: #selector(holdTimerFired),
-//                                         userInfo: nil,
-//                                         repeats: false)
-//        RunLoop.current.add(holdTimer!, forMode: .commonModes)
-        
+        if canBeginGesture() {
+            self.state = .began
+        }
         // Collecting Matching Border dragging.
         types = .none
         matches = [PSYBorderType]()
         
-        guard let point = startLocation else {
-            matches.append(types)
+        let point = touch.location(in: scrollView)
+        
+        guard let targetView = view else {
             return
         }
-        if (point.x >= (frame.origin.x - kTolerence) &&
-            point.x <= (frame.origin.x + frame.size.width + kTolerence )) {
-            if (point.y >= (frame.origin.y - kTolerence) &&
-                point.y <= (frame.origin.y + kTolerence)){
+        let targetFrame = targetView.frame
+        if (point.x >= (targetFrame.origin.x - kTolerence) &&
+            point.x <= (targetFrame.origin.x + targetFrame.size.width + kTolerence )) {
+            if (point.y >= (targetFrame.origin.y - kTolerence) &&
+                point.y <= (targetFrame.origin.y + kTolerence)){
                 if allowTopBorderDragging {
                     types = .top
+                    originalFrame = targetFrame
                 }
             }
-            else if (point.y >= (frame.origin.y + frame.size.height - kTolerence) &&
-                     point.y <= (frame.origin.y + frame.size.height + kTolerence)) {
+            else if (point.y >= (targetFrame.origin.y + targetFrame.size.height - kTolerence) &&
+                point.y <= (targetFrame.origin.y + targetFrame.size.height + kTolerence)) {
                 if allowBottomBorderDragging {
                     types = .bottom
+                    originalFrame = targetFrame
                 }
             }
         }
-        if (point.y >= (frame.origin.y - kTolerence) &&
-            point.y <= (frame.origin.y + frame.size.height + kTolerence)) {
-            if (point.x >= (frame.origin.x - kTolerence) &&
-                point.x <= (frame.origin.x + kTolerence)) {
+        if (point.y >= (targetFrame.origin.y - kTolerence) &&
+            point.y <= (targetFrame.origin.y + targetFrame.size.height + kTolerence)) {
+            if (point.x >= (targetFrame.origin.x - kTolerence) &&
+                point.x <= (targetFrame.origin.x + kTolerence)) {
                 if allowLeftBorderDragging {
                     types = .left
+                    originalFrame = targetFrame
                 }
             }
-            else if (point.x >= (frame.origin.x + frame.size.width - kTolerence) &&
-                     point.x <= (frame.origin.x + frame.size.width + kTolerence)) {
+            else if (point.x >= (targetFrame.origin.x + targetFrame.size.width - kTolerence) &&
+                point.x <= (targetFrame.origin.x + targetFrame.size.width + kTolerence)) {
                 if allowRightBorderDragging {
                     types = .right
+                    originalFrame = targetFrame
                 }
             }
         }
@@ -336,95 +335,77 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
         let translation = CGPoint(x: location.x - start.x,
                                   y: location.y - start.y)
         translationInWindow = translation
-//        if holding {
-//            let distance = sqrt(translation.x * translation.x + translation.y * translation.y)
-//            if distance > self.maximumMovement {
-//                self.tearDown()
-//                self.state = .failed
+//        if self.state == .possible {
+//            if canBeginGesture() {
+//                self.state = .began
 //            }
 //        }
 //        else {
-            if self.state == .possible {
-                if canBeginGesture() {
-                    self.state = .began
-                }
+            let contentInset = scrollView.contentInset
+            let frame = scrollView.frame
+            let locationInSuper = touch.location(in: scrollView.superview)
+            var insideRect = UIEdgeInsetsInsetRect(frame, contentInset)
+            insideRect = UIEdgeInsetsInsetRect(insideRect, autoScrollInsets)
+            var isInside = insideRect.contains(locationInSuper)
+
+            if locationInSuper.y < 0 || locationInSuper.y > (scrollView.superview?.frame.height)! {
+                isInside = true
+            }
+            if isInside {
+                self.endScrolling()
+                self.state = .changed
             }
             else {
-                let contentInset = scrollView.contentInset
-                let frame = scrollView.frame
-                let locationInSuper = touch.location(in: scrollView.superview)
-                var insideRect = UIEdgeInsetsInsetRect(frame, contentInset)
-                insideRect = UIEdgeInsetsInsetRect(insideRect, autoScrollInsets)
-                let isInside = insideRect.contains(locationInSuper)
-                if isInside {
-                    self.endScrolling()
-                    self.state = .changed
+                var speedX: CGFloat = 0
+                var speedY: CGFloat = 0
+                if allowVerticalScrolling {
+                    let minY = min(0, locationInSuper.y - (frame.origin.y + contentInset.top + autoScrollInsets.top))
+                    let maxY = max(0, locationInSuper.y - (frame.origin.y + frame.size.height - contentInset.bottom - autoScrollInsets.bottom))
+                    speedY = CGFloat(minY) + CGFloat(maxY)
                 }
-                else {
-                    var speedX: CGFloat = 0
-                    var speedY: CGFloat = 0
-                    if allowVerticalScrolling {
-                        let minY = min(0, locationInSuper.y - (frame.origin.y + contentInset.top + autoScrollInsets.top))
-                        let maxY = max(0, locationInSuper.y - (frame.origin.y + frame.size.height - contentInset.bottom - autoScrollInsets.bottom))
-                        speedY = CGFloat(minY) + CGFloat(maxY)
-                    }
-                    if allowHorizontalScrolling {
-                        let minX = min(0, locationInSuper.x - (frame.origin.x + contentInset.left + autoScrollInsets.left))
-                        let maxX = max(0, locationInSuper.x - (frame.origin.x + frame.size.width - contentInset.right - autoScrollInsets.right))
-                        speedX = CGFloat(minX) + CGFloat(maxX)
-                    }
-                    scrollSpeed = CGPoint(x: speedX * kSpeedMultiplier * kSecond , y: speedY * kSpeedMultiplier * kSecond)
-                    beginScrolling()
+                if allowHorizontalScrolling {
+                    let minX = min(0, locationInSuper.x - (frame.origin.x + contentInset.left + autoScrollInsets.left))
+                    let maxX = max(0, locationInSuper.x - (frame.origin.x + frame.size.width - contentInset.right - autoScrollInsets.right))
+                    speedX = CGFloat(minX) + CGFloat(maxX)
                 }
-                guard let types = matches.first else {
-                    return
-                }
-                guard let currentView = view else {
-                    return
-                }
-                var newFrame = currentView.frame
-                switch types {
-                case .none:
-                    var newXOrigin = newFrame.minX + ((allowHorizontalScrolling) ? translation.x : 0)
-                    var newYOrigin = newFrame.minY + ((allowVerticalScrolling) ? translation.y : 0)
-                    let center = CGPoint(x:currentView.center.x + ((allowHorizontalScrolling) ? translation.x : 0),
-                                         y:currentView.center.y + ((allowVerticalScrolling) ? translation.y : 0));
-                    let cagingArea = frame
-                    let cagingAreaOriginX = cagingArea.minX
-                    let cagingAreaOriginY = cagingArea.minY
-                    let cagingAreaRightSide = cagingAreaOriginX + cagingArea.width
-                    let cagingAreaBottomSide = cagingAreaOriginY + cagingArea.height
-                    if !cagingArea.equalTo(CGRect.zero) {
-                        // Check to make sure the view is still horizontally within the cagin area
-                        if newXOrigin <= cagingAreaOriginX || (newXOrigin + newFrame.width) >= cagingAreaRightSide {
-                            // Don't move
-                            newXOrigin = newFrame.minX
-                        }
-                        // Check to make sure the view is still vertically within the cagin area
-                        if newYOrigin <= cagingAreaOriginY || (newYOrigin + newFrame.height) >= cagingAreaBottomSide {
-                            // Don't move
-                            newYOrigin = newFrame.minY
-                        }
-                    }
-                    currentView.center = center
-                    break
-                case .right:
-                    newFrame.size.width += translation.x
-                    currentView.frame = newFrame
-                case .left:
-                    newFrame.origin.x += translation.x
-                    newFrame.size.width += translation.x
-                    currentView.frame = newFrame
-                case .top:
-                    newFrame.origin.y += translation.y
-                    newFrame.size.height -= translation.y
-                    currentView.frame = newFrame
-                    break
-                case .bottom:
-                    newFrame.size.height += translation.y
-                    currentView.frame = newFrame
-                    break
-                }
+                scrollSpeed = CGPoint(x: speedX * kSpeedMultiplier * kSecond , y: speedY * kSpeedMultiplier * kSecond)
+                beginScrolling()
+            }
+            guard let types = matches.first else {
+                return
+            }
+            guard let currentView = view else {
+                return
+            }
+            guard var newFrame = originalFrame else {
+                return
+            }
+            let translationInSuper = CGPoint(x: locationInSuper.x - start.x, y: locationInSuper.y - start.y)
+            switch types {
+            case .none:
+                break
+            case .right:
+                newFrame.size.width += translationInSuper.x
+                currentView.frame = newFrame
+                state = .changed
+            case .left:
+                newFrame.origin.x += translationInSuper.x
+                newFrame.size.width -= translationInSuper.x
+                currentView.frame = newFrame
+                state = .changed
+
+            case .top:
+                newFrame.origin.y += translationInSuper.y
+                newFrame.size.height -= translationInSuper.y
+                currentView.frame = newFrame
+                state = .changed
+
+                break
+            case .bottom:
+                newFrame.size.height += translationInSuper.y
+                currentView.frame = newFrame
+                state = .changed
+                break
             }
 //        }
     }
@@ -461,4 +442,5 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
         }
         return false
     }
+    
 }

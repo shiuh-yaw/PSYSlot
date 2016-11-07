@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.backgroundColor = UIColor.blue
         scrollView.contentSize = scrollViewSize
-        scrollView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 44, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 3
         scrollView.delegate = self
@@ -74,6 +74,7 @@ class ViewController: UIViewController {
             view.backgroundColor = randomColor
             contentView.addSubview(view)
             let holdDragRecognizer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
+            holdDragRecognizer.delegate = self
             view.addGestureRecognizer(holdDragRecognizer)
         }
     }
@@ -121,6 +122,14 @@ extension ViewController: UIScrollViewDelegate {
         
         return contentView
     }
-    
-    
 }
+
+extension ViewController: UIGestureRecognizerDelegate {
+    
+    // if your subviews are scrollviews, might need to tell the gesture recognizer
+    // to allow simultaneous gestures
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+}
+
