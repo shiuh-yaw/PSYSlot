@@ -258,9 +258,8 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     // MARK: Events
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-                guard let count = event.touches(for: self)?.count , count == 1 else {
+        guard let count = event.touches(for: self)?.count , count == 1 else {
             self.state = .failed
-
             return
         }
         guard let touch = touches.first else {
@@ -384,25 +383,26 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 guard let currentView = view else {
                     return
                 }
+                var newFrame = originalFrame
                 switch types {
                 case .none:
                     state = .changed
                     break
                 case .right:
-                    originalFrame.size.width += translation.x
-                    currentView.frame = originalFrame
+                    newFrame.size.width += translation.x
+                    currentView.frame = newFrame
                 case .left:
-                    originalFrame.origin.x += translation.x
-                    originalFrame.size.width -= translation.x
-                    currentView.frame = originalFrame
+                    newFrame.origin.x += translation.x
+                    newFrame.size.width -= translation.x
+                    currentView.frame = newFrame
                 case .top:
-                    originalFrame.origin.y += translation.y
-                    originalFrame.size.height -= translation.y
-                    currentView.frame = originalFrame
+                    newFrame.origin.y += translation.y
+                    newFrame.size.height -= translation.y
+                    currentView.frame = newFrame
                     break
                 case .bottom:
-                    originalFrame.size.height += translation.y
-                    currentView.frame = originalFrame
+                    newFrame.size.height += translation.y
+                    currentView.frame = newFrame
                     break
                 }
             }
