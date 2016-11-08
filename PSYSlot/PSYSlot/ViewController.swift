@@ -277,10 +277,10 @@ class ViewController: UIViewController {
             })
         }
         else if (recognizer.state == UIGestureRecognizerState.changed) {
-            let translation = recognizer.translationInView(view: contentView)
-            let center = CGPoint(x: startCenter.x + translation.x,
-                                 y: startCenter.y + translation.y)
-            view.center = center
+//            let translation = recognizer.translationInView(view: contentView)
+//            let center = CGPoint(x: startCenter.x + translation.x,
+//                                 y: startCenter.y + translation.y)
+//            view.center = center
         }
         else if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled) {
             UIView.animate(withDuration: 0.2, animations: {
