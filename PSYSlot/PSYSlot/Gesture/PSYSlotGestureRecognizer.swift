@@ -73,7 +73,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     // The default values are {44, 44, 44, 44}, the standard toolbar height
     public var autoScrollInsets: UIEdgeInsets = UIEdgeInsets(top: 44, left: 44, bottom: 44, right: 44)
     
-    private var translationInWindow: CGPoint?
+    private var translationInWindow: CGPoint = CGPoint.zero
     
     private var amountScrolled: CGPoint = CGPoint.zero
     
@@ -116,11 +116,8 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     // The transaltion of the drag gesture in the coordinated system fo the specifired view. Similar to UIPanGestureRecognizer's method.
     public func translationInView(view: UIView) -> CGPoint {
         
-        guard let translateInWindow = translationInWindow else {
-            return CGPoint(x: 0, y: 0)
-        }
-        let totalTranslationInWindow = CGPoint(x: translateInWindow.x + amountScrolled.x,
-                                               y: translateInWindow.y + amountScrolled.y)
+        let totalTranslationInWindow = CGPoint(x: translationInWindow.x + amountScrolled.x,
+                                               y: translationInWindow.y + amountScrolled.y)
         var totalTranslationInView = view.convert(totalTranslationInWindow, from: nil)
         let totalTranslationOfView = view.convert(CGPoint.zero, from: nil)
         totalTranslationInView = CGPoint(x: totalTranslationInView.x - totalTranslationOfView.x,
@@ -150,10 +147,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     
     private func canBeginGesture() -> Bool {
         
-        guard let translateInWindow = translationInWindow else {
-            return false
-        }
-        let distance = sqrt(translateInWindow.x * translateInWindow.x + translateInWindow.y * translateInWindow.y)
+        let distance = sqrt(translationInWindow.x * translationInWindow.x + translationInWindow.y * translationInWindow.y)
         return distance >= self.minimumMovement && state == UIGestureRecognizerState.possible
     }
     
@@ -357,6 +351,12 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 if locationInSuper.y < 0 || locationInSuper.y > (scrollView.superview?.frame.height)! {
                     isInside = true
                 }
+                print("frame \(view?.frame)")
+                print("locationInSuper.x \(locationInSuper.x)")
+                print("locationInSuper.y \(locationInSuper.y)")
+                print("scrollView.superview?.frame.height \(scrollView.superview?.frame.height)")
+                print("scrollView.frame.height \(scrollView.frame.height)")
+                print("---------------------------------------------------------------")
                 if isInside {
                     self.endScrolling()
                     self.state = .changed
@@ -386,7 +386,6 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 var newFrame = originalFrame
                 switch types {
                 case .none:
-                    state = .changed
                     break
                 case .right:
                     newFrame.size.width += translation.x
