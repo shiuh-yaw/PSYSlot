@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var pastSlots:[SlotView] = [SlotView]()
     var takenSlots:[SlotView] = [SlotView]()
     var controlSlots:[SlotView] = [SlotView]()
+    let allowHorizontalScrolling = true
+    let allowVerticalScrolling = false
 
     private var startCenter: CGPoint = CGPoint.zero
     var contentView: UIView!
@@ -152,8 +154,8 @@ class ViewController: UIViewController {
             if end != nil && begin != nil {
                 let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .control)
                 let psyGestureRecognizeer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
-                psyGestureRecognizeer.allowHorizontalScrolling = true
-                psyGestureRecognizeer.allowVerticalScrolling = false
+                psyGestureRecognizeer.allowHorizontalScrolling = allowHorizontalScrolling
+                psyGestureRecognizeer.allowVerticalScrolling = allowVerticalScrolling
                 psyGestureRecognizeer.allowTopBorderDragging = false
                 psyGestureRecognizeer.allowBottomBorderDragging = false
                 slotView.addGestureRecognizer(psyGestureRecognizeer)
@@ -277,10 +279,25 @@ class ViewController: UIViewController {
             })
         }
         else if (recognizer.state == UIGestureRecognizerState.changed) {
-//            let translation = recognizer.translationInView(view: contentView)
-//            let center = CGPoint(x: startCenter.x + translation.x,
-//                                 y: startCenter.y + translation.y)
-//            view.center = center
+            
+            let translation = recognizer.translationInView(view: contentView)
+            var newXOrigin = view.frame.minX + ((allowHorizontalScrolling) ? translation.x : 0)
+            var newYOrigin = view.frame.minY + ((allowVerticalScrolling) ? translation.y : 0)
+            let center = CGPoint(x:startCenter.x + ((allowHorizontalScrolling) ? translation.x : 0),
+                                 y:startCenter.y + ((allowVerticalScrolling) ? translation.y : 0))
+            let cagingAreaOriginX = contentView.frame.minX
+            let cagingAreaOriginY = contentView.frame.minY
+            let cagingAreaRightSide = cagingAreaOriginX + contentView.frame.width
+            let cagingAreaBottomSide = cagingAreaOriginY + contentView.frame.height
+            if !contentView.frame.equalTo(CGRect.zero) {
+                if newXOrigin <= cagingAreaOriginX || (newXOrigin + view.frame.width) >= cagingAreaRightSide {
+                    newXOrigin = view.frame.minX
+                }
+                if newYOrigin <= cagingAreaOriginY || (newYOrigin + view.frame.height) >= cagingAreaBottomSide {
+                    newYOrigin = view.frame.minY
+                }
+            }
+            view.center = center
         }
         else if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled) {
             UIView.animate(withDuration: 0.2, animations: {
