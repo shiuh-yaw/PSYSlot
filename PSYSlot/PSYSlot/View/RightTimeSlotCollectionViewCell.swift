@@ -12,4 +12,5 @@ class RightTimeSlotCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var leftSeparator: UIView!
     @IBOutlet weak var rightSeparator: UIView!
+    @IBOutlet weak var bottomSeparator: UIView!
 }

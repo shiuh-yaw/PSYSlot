@@ -36,7 +36,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VAV-h7-H9y" secondAttribute="trailing" constant="4" id="NPq-vh-DsH"/>
+                            <constraint firstAttribute="trailing" secondItem="VAV-h7-H9y" secondAttribute="trailing" id="NPq-vh-DsH"/>
                             <constraint firstAttribute="bottom" secondItem="VAV-h7-H9y" secondAttribute="bottom" id="mvn-Ex-DK1"/>
                             <constraint firstItem="VAV-h7-H9y" firstAttribute="top" secondItem="bdI-Sz-xaV" secondAttribute="top" id="sQ4-v8-upe"/>
                             <constraint firstItem="VAV-h7-H9y" firstAttribute="leading" secondItem="bdI-Sz-xaV" secondAttribute="leading" constant="4" id="tDu-yl-NFq"/>
@@ -55,16 +55,25 @@
                             <constraint firstAttribute="height" constant="1" id="GFS-TY-gDE"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5l-Bw-xPw">
+                        <color key="backgroundColor" red="0.54509806630000002" green="0.54901963470000004" blue="0.56078433989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Md6-VX-H2e"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="LbQ-Ao-cKw" firstAttribute="top" secondItem="NdO-s4-8Eg" secondAttribute="top" id="3n9-vx-Jcd"/>
                 <constraint firstItem="fRY-bV-NIq" firstAttribute="top" secondItem="bdI-Sz-xaV" secondAttribute="bottom" id="C5w-6R-BEr"/>
+                <constraint firstAttribute="trailing" secondItem="j5l-Bw-xPw" secondAttribute="trailing" id="CWT-52-8Tm"/>
                 <constraint firstItem="LbQ-Ao-cKw" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" id="CgL-Sx-59y"/>
                 <constraint firstAttribute="trailing" secondItem="fRY-bV-NIq" secondAttribute="trailing" id="Hdp-9W-AYH"/>
                 <constraint firstItem="Hbi-IM-5JM" firstAttribute="top" secondItem="NdO-s4-8Eg" secondAttribute="top" id="M8S-FM-ktL"/>
+                <constraint firstItem="j5l-Bw-xPw" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" id="Nge-8X-jIQ"/>
                 <constraint firstAttribute="trailing" secondItem="bdI-Sz-xaV" secondAttribute="trailing" constant="1" id="O6Y-Qc-AQC"/>
+                <constraint firstAttribute="bottom" secondItem="j5l-Bw-xPw" secondAttribute="bottom" id="Wlh-yQ-MCF"/>
                 <constraint firstAttribute="trailing" secondItem="LbQ-Ao-cKw" secondAttribute="trailing" id="Zbk-ds-bbQ"/>
                 <constraint firstItem="Hbi-IM-5JM" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" id="niv-Kt-VdR"/>
                 <constraint firstItem="fRY-bV-NIq" firstAttribute="leading" secondItem="NdO-s4-8Eg" secondAttribute="leading" constant="1" id="rcZ-IS-ObB"/>
@@ -73,6 +82,8 @@
                 <constraint firstAttribute="bottom" secondItem="Hbi-IM-5JM" secondAttribute="bottom" id="z5o-2h-onb"/>
             </constraints>
             <connections>
+                <outlet property="bottomSeparatorView" destination="j5l-Bw-xPw" id="NbN-rr-c0q"/>
+                <outlet property="leftSeparatorView" destination="Hbi-IM-5JM" id="dPJ-hl-OGq"/>
                 <outlet property="timeLabel" destination="VAV-h7-H9y" id="0IB-Fy-eYm"/>
             </connections>
         </collectionViewCell>

@@ -11,6 +11,8 @@ import UIKit
 class LeftTimeSlotCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var leftSeparatorView: UIView!
+    @IBOutlet weak var bottomSeparatorView: UIView!
     
     override func awakeFromNib() {
         

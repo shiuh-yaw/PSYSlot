@@ -21,6 +21,7 @@
 		21CEE9071DD0C581006BA64C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9061DD0C581006BA64C /* DateExtension.swift */; };
 		21CEE90A1DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9081DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift */; };
 		21CEE90B1DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */; };
+		21DBA3B91DD1659400D1E389 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DBA3B81DD1659400D1E389 /* SlotView.swift */; };
 		56A2187A06912FE3C019CF3F /* Pods_PSYSlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966E7191D740C5C5B84DAC2D /* Pods_PSYSlot.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		21CEE9061DD0C581006BA64C /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		21CEE9081DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightTimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
+		21DBA3B81DD1659400D1E389 /* SlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 		966E7191D740C5C5B84DAC2D /* Pods_PSYSlot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSYSlot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15BB0C1752FA01B5E36D460 /* Pods-PSYSlot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSYSlot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A2306EF5254BC82B3D885C /* Pods-PSYSlot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSYSlot.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSYSlot/Pods-PSYSlot.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				21CEE9091DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift */,
 				21CEE8FE1DD0BE9F006BA64C /* LeftTimeSlotCollectionViewCell.xib */,
 				21CEE8FF1DD0BE9F006BA64C /* RightTimeSlotCollectionViewCell.xib */,
+				21DBA3B81DD1659400D1E389 /* SlotView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				21CEE90B1DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift in Sources */,
 				21C715931DD02800005A6939 /* AppDelegate.swift in Sources */,
 				21CEE9041DD0C33A006BA64C /* Schedule.swift in Sources */,
+				21DBA3B91DD1659400D1E389 /* SlotView.swift in Sources */,
 				21C715C21DD0289C005A6939 /* PSYSlotGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -98,6 +98,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     private var types: PSYBorderType = .none
     private var matches: [PSYBorderType] = [PSYBorderType]()
     private var originalFrame: CGRect?
+    private var startCenter: CGPoint = CGPoint.zero
 
     override init(target: Any?, action: Selector?) {
         
@@ -284,20 +285,20 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
             return
         }
         let targetFrame = targetView.frame
+        originalFrame = targetFrame
+        startCenter = targetView.center
         if (point.x >= (targetFrame.origin.x - kTolerence) &&
             point.x <= (targetFrame.origin.x + targetFrame.size.width + kTolerence )) {
             if (point.y >= (targetFrame.origin.y - kTolerence) &&
                 point.y <= (targetFrame.origin.y + kTolerence)){
                 if allowTopBorderDragging {
                     types = .top
-                    originalFrame = targetFrame
                 }
             }
             else if (point.y >= (targetFrame.origin.y + targetFrame.size.height - kTolerence) &&
                 point.y <= (targetFrame.origin.y + targetFrame.size.height + kTolerence)) {
                 if allowBottomBorderDragging {
                     types = .bottom
-                    originalFrame = targetFrame
                 }
             }
         }
@@ -307,14 +308,12 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 point.x <= (targetFrame.origin.x + kTolerence)) {
                 if allowLeftBorderDragging {
                     types = .left
-                    originalFrame = targetFrame
                 }
             }
             else if (point.x >= (targetFrame.origin.x + targetFrame.size.width - kTolerence) &&
                 point.x <= (targetFrame.origin.x + targetFrame.size.width + kTolerence)) {
                 if allowRightBorderDragging {
                     types = .right
-                    originalFrame = targetFrame
                 }
             }
         }
@@ -347,10 +346,16 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
             var insideRect = UIEdgeInsetsInsetRect(frame, contentInset)
             insideRect = UIEdgeInsetsInsetRect(insideRect, autoScrollInsets)
             var isInside = insideRect.contains(locationInSuper)
-
             if locationInSuper.y < 0 || locationInSuper.y > (scrollView.superview?.frame.height)! {
                 isInside = true
             }
+            guard var newFrame = originalFrame else {
+                return
+            }
+            guard let currentView = view else {
+                return
+            }
+            let translationInSuper = CGPoint(x: locationInSuper.x - start.x, y: locationInSuper.y - start.y)
             if isInside {
                 self.endScrolling()
                 self.state = .changed
@@ -374,13 +379,6 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
             guard let types = matches.first else {
                 return
             }
-            guard let currentView = view else {
-                return
-            }
-            guard var newFrame = originalFrame else {
-                return
-            }
-            let translationInSuper = CGPoint(x: locationInSuper.x - start.x, y: locationInSuper.y - start.y)
             switch types {
             case .none:
                 break
