@@ -8,31 +8,31 @@
 
 import Foundation
 
-public func < (first: Date, second: Date) -> Bool {
-    return first.compare(second as Date) == .orderedAscending
-}
-
-
-public func > (first: Date, second: Date) -> Bool {
-    return first.compare(second) == .orderedDescending
-}
-
-public func <= (first: Date, second: Date) -> Bool {
-    let cmp = first.compare(second)
-    return cmp == .orderedAscending || cmp == .orderedSame
-}
-
-public func >= (first: Date, second: Date) -> Bool {
-    let cmp = first.compare(second)
-    return cmp == .orderedDescending || cmp == .orderedSame
-}
-
-public func == (first: Date, second: Date) -> Bool {
-    return first.compare(second) == .orderedSame
-}
 
 extension Date {
-        
+    
+    static public func < (first: Date, second: Date) -> Bool {
+        return first.compare(second as Date) == .orderedAscending
+    }
+    
+    static public func > (first: Date, second: Date) -> Bool {
+        return first.compare(second) == .orderedDescending
+    }
+    
+    static public func <= (first: Date, second: Date) -> Bool {
+        let cmp = first.compare(second)
+        return cmp == .orderedAscending || cmp == .orderedSame
+    }
+    
+    static public func >= (first: Date, second: Date) -> Bool {
+        let cmp = first.compare(second)
+        return cmp == .orderedDescending || cmp == .orderedSame
+    }
+    
+    static public func == (first: Date, second: Date) -> Bool {
+        return first.compare(second) == .orderedSame
+    }
+
     var shortDate: String {
         let shortDate = DateFormatter()
         shortDate.dateStyle = .medium

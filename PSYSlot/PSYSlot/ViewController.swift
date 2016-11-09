@@ -161,6 +161,9 @@ class ViewController: UIViewController {
             slots.append(schedule)
             beginDateTime = endDateTime
         }
+        slots = slots.sorted {
+            return $0.begin! < $1.begin!
+        }
         collectionView.reloadData()
         removeTap()
         setupContentView()
@@ -186,19 +189,8 @@ class ViewController: UIViewController {
             guard let startTime = event.begin , let endTime = event.end else {
                 return
             }
-            var begin: Int?
-            var end: Int?
-            for schedule in slots {
-                guard let scheduleBegin = schedule.begin  else {
-                    return
-                }
-                if startTime.shortTime == scheduleBegin.shortTime {
-                    begin = slots.index(of:schedule)
-                }
-                else if endTime.shortTime == scheduleBegin.shortTime {
-                    end = slots.index(of:schedule)
-                }
-            }
+            let begin: Int? = slots.index{ $0.begin == startTime }
+            let end: Int? = slots.index{ $0.begin == endTime }
             if end != nil && begin != nil {
                 let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .control)
                 slotView.enableLeft(seperator: true, handle: true)
@@ -284,19 +276,8 @@ class ViewController: UIViewController {
             guard let startTime = event.begin , let endTime = event.end else {
                 return
             }
-            var begin: Int?
-            var end: Int?
-            for schedule in slots {
-                guard let scheduleBegin = schedule.begin  else {
-                    return
-                }
-                if startTime.shortTime == scheduleBegin.shortTime {
-                    begin = slots.index(of:schedule)
-                }
-                else if endTime.shortTime == scheduleBegin.shortTime {
-                    end = slots.index(of:schedule)
-                }
-            }
+            let begin: Int? = slots.index{ $0.begin == startTime }
+            let end: Int? = slots.index{ $0.begin == endTime }
             if end != nil && begin != nil {
                 let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .taken)
                 slotView.clipsToBounds = true
@@ -429,17 +410,7 @@ class ViewController: UIViewController {
         var newFrame = controlView.frame
         newFrame.origin.x = newFrame.origin.x + 5
         newFrame.size.width = newFrame.size.width - 5
-        for subviews in takenSlots {
-            if subviews.frame.intersects(newFrame) {
-                return true
-            }
-        }
-        for subviews in pastSlots {
-            if subviews.frame.intersects(newFrame) {
-                return true
-            }
-        }
-        return false
+        return (takenSlots.filter{ $0.frame.intersects(newFrame) }.count > 0 || pastSlots.filter{ $0.frame.intersects(newFrame) }.count > 0 ) ? true : false
     }
 
     

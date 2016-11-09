@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2135C2591DD2F928001CE6A3 /* SlotControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135C2581DD2F928001CE6A3 /* SlotControlView.swift */; };
+		214545BD1DD364400029BA68 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214545BC1DD364400029BA68 /* ArrayExtension.swift */; };
 		21C715931DD02800005A6939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715921DD02800005A6939 /* AppDelegate.swift */; };
 		21C715951DD02800005A6939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C715941DD02800005A6939 /* ViewController.swift */; };
 		21C715981DD02800005A6939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C715961DD02800005A6939 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		2135C2581DD2F928001CE6A3 /* SlotControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotControlView.swift; sourceTree = "<group>"; };
+		214545BC1DD364400029BA68 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		21C7158F1DD02800005A6939 /* PSYSlot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSYSlot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C715921DD02800005A6939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21C715941DD02800005A6939 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				21CEE9061DD0C581006BA64C /* DateExtension.swift */,
+				214545BC1DD364400029BA68 /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				21CEE90A1DD0C6B3006BA64C /* LeftTimeSlotCollectionViewCell.swift in Sources */,
 				21CEE90B1DD0C6B3006BA64C /* RightTimeSlotCollectionViewCell.swift in Sources */,
 				21C715931DD02800005A6939 /* AppDelegate.swift in Sources */,
+				214545BD1DD364400029BA68 /* ArrayExtension.swift in Sources */,
 				21CEE9041DD0C33A006BA64C /* Schedule.swift in Sources */,
 				21DBA3B91DD1659400D1E389 /* SlotView.swift in Sources */,
 				2135C2591DD2F928001CE6A3 /* SlotControlView.swift in Sources */,
