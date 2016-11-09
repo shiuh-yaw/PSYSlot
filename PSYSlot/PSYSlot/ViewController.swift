@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     let allowVerticalScrolling = false
 
     private var startCenter: CGPoint = CGPoint.zero
+    private var originalFrame: CGRect = CGRect.zero
     var contentView: UIView!
 
     override func viewDidLoad() {
@@ -272,6 +273,7 @@ class ViewController: UIViewController {
         }
         if recognizer.state == UIGestureRecognizerState.began {
             startCenter = view.center
+            originalFrame = view.frame
             view.superview?.bringSubview(toFront: view)
             UIView.animate(withDuration: 0.2, animations: {
                 view.transform = CGAffineTransform.identity
@@ -281,23 +283,33 @@ class ViewController: UIViewController {
         else if (recognizer.state == UIGestureRecognizerState.changed) {
             
             let translation = recognizer.translationInView(view: contentView)
-            var newXOrigin = view.frame.minX + ((allowHorizontalScrolling) ? translation.x : 0)
-            var newYOrigin = view.frame.minY + ((allowVerticalScrolling) ? translation.y : 0)
             let center = CGPoint(x:startCenter.x + ((allowHorizontalScrolling) ? translation.x : 0),
                                  y:startCenter.y + ((allowVerticalScrolling) ? translation.y : 0))
-            let cagingAreaOriginX = contentView.frame.minX
-            let cagingAreaOriginY = contentView.frame.minY
-            let cagingAreaRightSide = cagingAreaOriginX + contentView.frame.width
-            let cagingAreaBottomSide = cagingAreaOriginY + contentView.frame.height
-            if !contentView.frame.equalTo(CGRect.zero) {
-                if newXOrigin <= cagingAreaOriginX || (newXOrigin + view.frame.width) >= cagingAreaRightSide {
-                    newXOrigin = view.frame.minX
-                }
-                if newYOrigin <= cagingAreaOriginY || (newYOrigin + view.frame.height) >= cagingAreaBottomSide {
-                    newYOrigin = view.frame.minY
-                }
+            guard let types = recognizer.matches.first else {
+                return
             }
-            view.center = center
+            var newFrame = originalFrame
+            switch types {
+            case .none:
+                view.center = center
+                break
+            case .right:
+                newFrame.size.width += translation.x
+                view.frame = newFrame
+            case .left:
+                newFrame.origin.x += translation.x
+                newFrame.size.width -= translation.x
+                view.frame = newFrame
+            case .top:
+                newFrame.origin.y += translation.y
+                newFrame.size.height -= translation.y
+                view.frame = newFrame
+                break
+            case .bottom:
+                newFrame.size.height += translation.y
+                view.frame = newFrame
+                break
+            }
         }
         else if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled) {
             UIView.animate(withDuration: 0.2, animations: {
@@ -307,6 +319,30 @@ class ViewController: UIViewController {
         }
         else if (recognizer.state == UIGestureRecognizerState.failed) {
             
+        }
+    }
+    
+    func controlSnap(view: SlotView) {
+        
+        view.begin = round(view.frame.minX/cellWidth)
+        view.slot = round(view.frame.width/cellWidth)
+        if view.slot <= 0 {
+            view.slot = 1
+        }
+        if view.begin < 0 {
+            view.begin = 0
+        }
+        let newFrame = view.frame
+        var newXOrigin = CGFloat(view.begin) * cellWidth
+        let cagingArea = contentView.frame
+        let cagingAreaOriginX = cagingArea.minX
+        let cagingAreaRightSide = cagingAreaOriginX + cagingArea.width
+        if (newXOrigin + newFrame.width) >= cagingAreaRightSide {
+            newXOrigin = cagingArea.width - newFrame.size.width
+            view.begin = round(newXOrigin/cellWidth) - 1
+        }
+        if newXOrigin <= cagingAreaOriginX  {
+            view.begin = 0
         }
     }
     

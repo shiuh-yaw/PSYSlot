@@ -34,7 +34,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     
     // The maximum distance in points the user is allowed to move his finger while presenting down on the view (before the gesture is started)
     // The default value is 10 points, similar to UILongPressGestureRecognizer
-    public var maximumMovement: CGFloat = 5
+    public var maximumMovement: CGFloat = 10
     
     // A rectangle in the gesture recognizer's view's coordinate system. Touches outside of this frame will be ignored.
     public var frame: CGRect {
@@ -96,8 +96,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
     private var previousTimestamp: CFTimeInterval = 0.0
     
     private var types: PSYBorderType = .none
-    private var matches: [PSYBorderType] = [PSYBorderType]()
-    private var originalFrame: CGRect = CGRect.zero
+    var matches: [PSYBorderType] = [PSYBorderType]()
     
     override init(target: Any?, action: Selector?) {
         
@@ -108,7 +107,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
         allowBottomBorderDragging   = true
         allowLeftBorderDragging     = true
         allowRightBorderDragging    = true
-        minimumPressDuration        = 0.5
+        minimumPressDuration        = 0.0
         minimumMovement             = 0
         maximumMovement             = 10
         autoScrollInsets = UIEdgeInsets(top: 44, left: 44, bottom: 44, right: 44)
@@ -163,7 +162,7 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
         holdTimer = nil
     }
     
-    func gestureRecognizerReset() {
+    override func reset() {
         
         holding = false
         scrolling = false
@@ -285,7 +284,6 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
             return
         }
         let targetFrame = targetView.frame
-        originalFrame = targetFrame
         if (point.x >= (targetFrame.origin.x - kTolerence) &&
             point.x <= (targetFrame.origin.x + targetFrame.size.width + kTolerence )) {
             if (point.y >= (targetFrame.origin.y - kTolerence) &&
@@ -336,9 +334,9 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
             }
         }
         else {
-            if self.state == .possible {
+            if state == .possible {
                 if canBeginGesture() {
-                    self.state = .began
+                    state = .began
                 }
             }
             else {
@@ -351,12 +349,12 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 if locationInSuper.y < 0 || locationInSuper.y > (scrollView.superview?.frame.height)! {
                     isInside = true
                 }
-                print("frame \(view?.frame)")
-                print("locationInSuper.x \(locationInSuper.x)")
-                print("locationInSuper.y \(locationInSuper.y)")
-                print("scrollView.superview?.frame.height \(scrollView.superview?.frame.height)")
-                print("scrollView.frame.height \(scrollView.frame.height)")
-                print("---------------------------------------------------------------")
+//                print("frame \(view?.frame)")
+//                print("locationInSuper.x \(locationInSuper.x)")
+//                print("locationInSuper.y \(locationInSuper.y)")
+//                print("scrollView.superview?.frame.height \(scrollView.superview?.frame.height)")
+//                print("scrollView.frame.height \(scrollView.frame.height)")
+//                print("---------------------------------------------------------------")
                 if isInside {
                     self.endScrolling()
                     self.state = .changed
@@ -376,33 +374,6 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                     }
                     scrollSpeed = CGPoint(x: speedX * kSpeedMultiplier * kSecond , y: speedY * kSpeedMultiplier * kSecond)
                     beginScrolling()
-                }
-                guard let types = matches.first else {
-                    return
-                }
-                guard let currentView = view else {
-                    return
-                }
-                var newFrame = originalFrame
-                switch types {
-                case .none:
-                    break
-                case .right:
-                    newFrame.size.width += translation.x
-                    currentView.frame = newFrame
-                case .left:
-                    newFrame.origin.x += translation.x
-                    newFrame.size.width -= translation.x
-                    currentView.frame = newFrame
-                case .top:
-                    newFrame.origin.y += translation.y
-                    newFrame.size.height -= translation.y
-                    currentView.frame = newFrame
-                    break
-                case .bottom:
-                    newFrame.size.height += translation.y
-                    currentView.frame = newFrame
-                    break
                 }
             }
         }
