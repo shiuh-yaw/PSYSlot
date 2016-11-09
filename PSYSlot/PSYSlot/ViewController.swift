@@ -38,10 +38,12 @@ class ViewController: UIViewController {
         if contentView != nil {
             contentView.removeFromSuperview()
         }
+        collectionView.setNeedsDisplay()
         let scrollViewSize = CGSize(width: collectionView.contentSize.width, height: collectionView.contentSize.height - 24)
         let rect = CGRect(origin: CGPoint(x: 0, y: 24), size: scrollViewSize)
         contentView = UIView(frame: rect)
         contentView.backgroundColor = UIColor.clear
+        contentView.setNeedsDisplay()
         collectionView.addSubview(contentView)
     }
 
@@ -115,13 +117,19 @@ class ViewController: UIViewController {
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
+        collectionView.addGestureRecognizer(tapGesture)
     }
 
+    func removeTap() {
+        if (collectionView != nil && tapGesture != nil) {
+            collectionView.removeGestureRecognizer(tapGesture)
+        }
+    }
     
     func handleDeviceOrientationDidChangeNotification(notification: NSNotification) {
         
         collectionView.reloadData()
+        removeTap()
         setupContentView()
         updateTakenViews(width: cellWidth)
         updatePastSlot(width: cellWidth)
@@ -154,6 +162,7 @@ class ViewController: UIViewController {
             beginDateTime = endDateTime
         }
         collectionView.reloadData()
+        removeTap()
         setupContentView()
         updateTakenViews(width: cellWidth)
         updatePastSlot(width: cellWidth)
