@@ -9,6 +9,7 @@
 import UIKit
 
 enum SlotViewType: Int {
+    case taken
     case unavailable
     case available
     case past
@@ -50,10 +51,14 @@ class SlotView: UIView {
     func setType(type:SlotViewType) {
         
         switch type {
-        case .unavailable:
+        case .taken:
             let tileImage: UIImage = UIImage(named: "slash")!
             let bgColor = UIColor(patternImage: tileImage)
             backgroundColor = bgColor
+            tag = type.rawValue
+        case .unavailable:
+            let bgColor = UIColor.red
+            self.backgroundColor = bgColor.withAlphaComponent(0.3)
             tag = type.rawValue
         case .available:
             let bgColor = UIColor.clear
@@ -61,10 +66,10 @@ class SlotView: UIView {
             tag = type.rawValue
         case .past:
             let bgColor = UIColor.lightGray
-            self.backgroundColor = bgColor.withAlphaComponent(0.7)
+            self.backgroundColor = bgColor
             tag = type.rawValue
         case .control:
-            let bgColor = UIColor.red
+            let bgColor = UIColor.green
             self.backgroundColor = bgColor.withAlphaComponent(0.3)
             tag = type.rawValue
         }

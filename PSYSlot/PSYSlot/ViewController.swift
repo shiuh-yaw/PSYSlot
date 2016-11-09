@@ -175,6 +175,7 @@ class ViewController: UIViewController {
         controlSlots = views.map({(view) in
             return view
         })
+        setControlAvailability()
     }
     
     func updatePastSlot(width:CGFloat) {
@@ -248,13 +249,13 @@ class ViewController: UIViewController {
                 }
             }
             if end != nil && begin != nil {
-                let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .unavailable)
+                let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .taken)
                 slotView.clipsToBounds = true
                 views.append(slotView)
             }
         }
         for subviews in contentView.subviews {
-            if subviews.tag == SlotViewType.unavailable.rawValue {
+            if subviews.tag == SlotViewType.taken.rawValue {
                 subviews.removeFromSuperview()
             }
         }
@@ -279,6 +280,7 @@ class ViewController: UIViewController {
                 view.transform = CGAffineTransform.identity
                 view.alpha = 0.7
             })
+            setControlAvailability()
         }
         else if (recognizer.state == UIGestureRecognizerState.changed) {
             
@@ -310,15 +312,15 @@ class ViewController: UIViewController {
                 view.frame = newFrame
                 break
             }
+            setControlAvailability()
         }
         else if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled) {
-            UIView.animate(withDuration: 0.2, animations: {
-                view.transform = CGAffineTransform.identity
-                view.alpha = 1.0
-            })
+            setControlAvailability()
+            controlSnap(view: view as! SlotView)
         }
         else if (recognizer.state == UIGestureRecognizerState.failed) {
-            
+            setControlAvailability()
+            controlSnap(view: view as! SlotView)
         }
     }
     
@@ -344,7 +346,52 @@ class ViewController: UIViewController {
         if newXOrigin <= cagingAreaOriginX  {
             view.begin = 0
         }
+        
+        UIView.animate(withDuration: 0.2) {
+            view.transform = CGAffineTransform.identity
+            view.alpha = 1.0
+            view.frame = CGRect(x: CGFloat(view.begin) * self.cellWidth,
+                                y: 0,
+                                width: CGFloat(view.slot) * self.cellWidth,
+                                height: self.contentView.frame.size.height)
+            view.setNeedsDisplay()
+        }
     }
+    
+    func setControlAvailability() {
+        
+        guard let controlView = controlSlots.first else {
+            return
+        }
+        if self.checkInterceptView() {
+            controlView.setType(type: .unavailable)
+        }
+        else {
+            controlView.setType(type: .control)
+        }
+    }
+    
+    func checkInterceptView() -> Bool {
+        
+        guard let controlView = controlSlots.first else {
+            return true
+        }
+        var newFrame = controlView.frame
+        newFrame.origin.x = newFrame.origin.x + 5
+        newFrame.size.width = newFrame.size.width - 5
+        for subviews in takenSlots {
+            if subviews.frame.intersects(newFrame) {
+                return true
+            }
+        }
+        for subviews in pastSlots {
+            if subviews.frame.intersects(newFrame) {
+                return true
+            }
+        }
+        return false
+    }
+
     
     override func didReceiveMemoryWarning() {
         
