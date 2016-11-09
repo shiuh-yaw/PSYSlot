@@ -24,6 +24,7 @@ class ViewController: UIViewController {
 
     private var startCenter: CGPoint = CGPoint.zero
     private var originalFrame: CGRect = CGRect.zero
+    var tapGesture: UITapGestureRecognizer!
     var contentView: UIView!
 
     override func viewDidLoad() {
@@ -80,6 +81,43 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self)
     }
+    
+    func handleTap(gesture: UITapGestureRecognizer) {
+        
+        let locationInCollectionView = gesture.location(in: collectionView)
+        guard let controlView = controlSlots.first else {
+            return
+        }
+        var begin = round(locationInCollectionView.x/cellWidth)
+        let endIndex = Int(begin + controlView.slot)
+        if endIndex > slots.count - 2 {
+            begin = CGFloat(slots.count - 1) - CGFloat(controlView.slot)
+        }
+        var newFrame = controlView.frame
+        var newXOrigin = CGFloat(begin) * cellWidth
+        let cagingArea = self.contentView.frame
+        let cagingAreaOriginX = cagingArea.minX
+        let cagingAreaRightSide = cagingAreaOriginX + cagingArea.width
+        if newXOrigin <= cagingAreaOriginX  {
+            newXOrigin = 0
+        }
+        if (newXOrigin + newFrame.width) >= cagingAreaRightSide {
+            newXOrigin = cagingArea.width - newFrame.size.width
+        }
+        newFrame.origin.x = newXOrigin
+        controlView.frame = newFrame
+        controlView.setNeedsDisplay()
+        setControlAvailability()
+        controlSnap(view: controlView)
+    }
+
+    func enableTap() {
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
     
     func handleDeviceOrientationDidChangeNotification(notification: NSNotification) {
         
@@ -153,7 +191,6 @@ class ViewController: UIViewController {
                 }
             }
             if end != nil && begin != nil {
-                print("contentView.frame.size.height \(contentView.frame.size.height)")
                 let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .control)
                 slotView.enableLeft(seperator: true, handle: true)
                 slotView.enableRight(seperator: true, handle: true)
@@ -163,6 +200,7 @@ class ViewController: UIViewController {
                 psyGestureRecognizeer.allowTopBorderDragging = false
                 psyGestureRecognizeer.allowBottomBorderDragging = false
                 slotView.addGestureRecognizer(psyGestureRecognizeer)
+                enableTap()
                 views.append(slotView)
             }
         }

@@ -349,12 +349,6 @@ class PSYSlotGestureRecognizer: UIGestureRecognizer {
                 if locationInSuper.y < 0 || locationInSuper.y > (scrollView.superview?.frame.height)! {
                     isInside = true
                 }
-//                print("frame \(view?.frame)")
-//                print("locationInSuper.x \(locationInSuper.x)")
-//                print("locationInSuper.y \(locationInSuper.y)")
-//                print("scrollView.superview?.frame.height \(scrollView.superview?.frame.height)")
-//                print("scrollView.frame.height \(scrollView.frame.height)")
-//                print("---------------------------------------------------------------")
                 if isInside {
                     self.endScrolling()
                     self.state = .changed
