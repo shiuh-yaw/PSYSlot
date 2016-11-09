@@ -191,7 +191,7 @@ class ViewController: UIViewController {
                 }
             }
             if end != nil && begin != nil {
-                let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .control)
+                let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .control)
                 slotView.enableLeft(seperator: true, handle: true)
                 slotView.enableRight(seperator: true, handle: true)
                 let psyGestureRecognizeer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
@@ -233,7 +233,7 @@ class ViewController: UIViewController {
             }
             if isPast {
                 if let begin = slots.index(of:schedule) {
-                    let slotView = SlotView(begin: CGFloat(begin), slot: 1, width: width, height: contentView.frame.size.height, type: .past)
+                    let slotView = SlotView(begin: CGFloat(begin), slot: 1, width: width, height: contentView.frame.size.height - 1, type: .past)
                     for view in takenSlots {
                         if begin >= Int(view.begin) &&  begin < Int(view.begin + view.slot) {
                             slotView.backgroundColor = UIColor.clear
@@ -289,7 +289,7 @@ class ViewController: UIViewController {
                 }
             }
             if end != nil && begin != nil {
-                let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .taken)
+                let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .taken)
                 slotView.clipsToBounds = true
                 views.append(slotView)
             }
