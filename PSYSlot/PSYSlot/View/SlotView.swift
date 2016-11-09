@@ -18,7 +18,6 @@ enum SlotViewType: Int {
 
 class SlotView: UIView {
 
-    let y: CGFloat = 0.0
     var begin: CGFloat = 0.0
     var slot: CGFloat = 0.0
     
@@ -38,7 +37,7 @@ class SlotView: UIView {
         self.slot = slot
         let x = CGFloat(begin * width)
         let width = CGFloat(slot * width)
-        let frame = CGRect(x: x + 1, y: y, width: width - 1, height: height)
+        let frame = CGRect(x: x + 1, y: 0.0, width: width - 1, height: height)
         super.init(frame: frame)
         setType(type: type)
     }

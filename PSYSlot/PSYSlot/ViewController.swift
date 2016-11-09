@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         if contentView != nil {
             contentView.removeFromSuperview()
         }
-        let scrollViewSize = CGSize(width: collectionView.contentSize.width, height: collectionView.contentSize.height)
+        let scrollViewSize = CGSize(width: collectionView.contentSize.width, height: collectionView.contentSize.height - 24)
         let rect = CGRect(origin: CGPoint(x: 0, y: 24), size: scrollViewSize)
         contentView = UIView(frame: rect)
         contentView.backgroundColor = UIColor.clear
@@ -153,14 +153,16 @@ class ViewController: UIViewController {
                 }
             }
             if end != nil && begin != nil {
-                let slotView = SlotView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .control)
+                print("contentView.frame.size.height \(contentView.frame.size.height)")
+                let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height, type: .control)
+                slotView.enableLeft(seperator: true, handle: true)
+                slotView.enableRight(seperator: true, handle: true)
                 let psyGestureRecognizeer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
                 psyGestureRecognizeer.allowHorizontalScrolling = allowHorizontalScrolling
                 psyGestureRecognizeer.allowVerticalScrolling = allowVerticalScrolling
                 psyGestureRecognizeer.allowTopBorderDragging = false
                 psyGestureRecognizeer.allowBottomBorderDragging = false
                 slotView.addGestureRecognizer(psyGestureRecognizeer)
-                slotView.clipsToBounds = true
                 views.append(slotView)
             }
         }
@@ -312,6 +314,7 @@ class ViewController: UIViewController {
                 view.frame = newFrame
                 break
             }
+            view.setNeedsDisplay()
             setControlAvailability()
         }
         else if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled) {
