@@ -4,10 +4,10 @@ PSYSlot is a simple and lightweight UIView based gesture control which can used 
 
 # Demo (Image)
 <br>
-<img height="700" src="https://github.com/ShiuhYaw/PSYSlot/blob/master/PSYSlot/PSYSlot/Assets.xcassets/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.51%20AM.imageset/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.51%20AM.png">
+<img height="667" src="https://github.com/ShiuhYaw/PSYSlot/blob/master/PSYSlot/PSYSlot/Assets.xcassets/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.51%20AM.imageset/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.51%20AM.png">
 <br>
 <br>
-<img height="700" src="https://github.com/ShiuhYaw/PSYSlot/blob/master/PSYSlot/PSYSlot/Assets.xcassets/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.57%20AM.imageset/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.57%20AM.png">
+<img height="375" src="https://github.com/ShiuhYaw/PSYSlot/blob/master/PSYSlot/PSYSlot/Assets.xcassets/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.57%20AM.imageset/Simulator%20Screen%20Shot%2010%20Nov%202016%2C%2010.36.57%20AM.png">
 <br>
 
 #Installation
