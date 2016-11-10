@@ -25,26 +25,22 @@ class ViewController: UIViewController {
     private var startCenter: CGPoint = CGPoint.zero
     private var originalFrame: CGRect = CGRect.zero
     var tapGesture: UITapGestureRecognizer!
-    var contentView: UIView!
+    var contentView: UIView! = UIView(frame: CGRect.zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.register(UINib(nibName: rightTimeSlotCollectionViewCell, bundle: Bundle.main), forCellWithReuseIdentifier: rightTimeSlotCollectionViewCell)
         collectionView!.register(UINib(nibName: leftTimeSlotCollectionViewCell, bundle: Bundle.main), forCellWithReuseIdentifier: leftTimeSlotCollectionViewCell)
+        collectionView.addSubview(contentView)
     }
     
     func setupContentView() {
         
-        if contentView != nil {
-            contentView.removeFromSuperview()
-        }
-        collectionView.setNeedsDisplay()
-        let scrollViewSize = CGSize(width: collectionView.contentSize.width, height: collectionView.contentSize.height - 24)
+        let scrollViewSize = CGSize(width: CGFloat(slots.count) * cellWidth, height: collectionView.frame.height - 24)
         let rect = CGRect(origin: CGPoint(x: 0, y: 24), size: scrollViewSize)
-        contentView = UIView(frame: rect)
+        contentView.frame = rect
         contentView.backgroundColor = UIColor.clear
         contentView.setNeedsDisplay()
-        collectionView.addSubview(contentView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +59,7 @@ class ViewController: UIViewController {
         
         super.viewWillDisappear(animated)
         removeRotationObserver()
+        removeTap()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -86,6 +83,7 @@ class ViewController: UIViewController {
     
     func handleTap(gesture: UITapGestureRecognizer) {
         
+        updateControlSlot(width: cellWidth)
         let locationInCollectionView = gesture.location(in: collectionView)
         guard let controlView = controlSlots.first else {
             return
@@ -108,7 +106,6 @@ class ViewController: UIViewController {
         }
         newFrame.origin.x = newXOrigin
         controlView.frame = newFrame
-        controlView.setNeedsDisplay()
         setControlAvailability()
         controlSnap(view: controlView)
     }
@@ -129,7 +126,6 @@ class ViewController: UIViewController {
     func handleDeviceOrientationDidChangeNotification(notification: NSNotification) {
         
         collectionView.reloadData()
-        removeTap()
         setupContentView()
         updateTakenViews(width: cellWidth)
         updatePastSlot(width: cellWidth)
@@ -165,58 +161,62 @@ class ViewController: UIViewController {
             return $0.begin! < $1.begin!
         }
         collectionView.reloadData()
-        removeTap()
         setupContentView()
         updateTakenViews(width: cellWidth)
         updatePastSlot(width: cellWidth)
-        updateControlSlot(width: cellWidth)
+        enableTap()
     }
     
     func updateControlSlot(width: CGFloat) {
         
-        let schedule = Schedule()
-        schedule.begin = Date().setTimeOfDate(13, minute: 30, second: 0)
-        schedule.end = Date().setTimeOfDate(14, minute: 0, second: 0)
-        schedule.display_begin = schedule.begin?.shortTime
-        schedule.display_end = schedule.end?.shortTime
-        schedule.beginString = schedule.begin?.toString(.custom("HH:mm"))
-        schedule.endString = schedule.end?.toString(.custom("HH:mm"))
-        var views = [SlotView]()
-        var events = [Schedule]()
-        events.append(schedule)
-        
-        for event in events {
-            guard let startTime = event.begin , let endTime = event.end else {
+        if controlSlots.count < 1 {
+            let schedule = Schedule()
+            schedule.begin = Date().setTimeOfDate(13, minute: 30, second: 0)
+            schedule.end = Date().setTimeOfDate(14, minute: 0, second: 0)
+            schedule.display_begin = schedule.begin?.shortTime
+            schedule.display_end = schedule.end?.shortTime
+            schedule.beginString = schedule.begin?.toString(.custom("HH:mm"))
+            schedule.endString = schedule.end?.toString(.custom("HH:mm"))
+            var views = [SlotView]()
+            var events = [Schedule]()
+            events.append(schedule)
+            
+            for event in events {
+                guard let startTime = event.begin , let endTime = event.end else {
+                    return
+                }
+                let begin: Int? = slots.index{ $0.begin == startTime }
+                let end: Int? = slots.index{ $0.begin == endTime }
+                if end != nil && begin != nil {
+                    let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .control)
+                    slotView.enableLeft(seperator: true, handle: true)
+                    slotView.enableRight(seperator: true, handle: true)
+                    let psyGestureRecognizeer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
+                    psyGestureRecognizeer.allowHorizontalScrolling = allowHorizontalScrolling
+                    psyGestureRecognizeer.allowVerticalScrolling = allowVerticalScrolling
+                    psyGestureRecognizeer.allowTopBorderDragging = false
+                    psyGestureRecognizeer.allowBottomBorderDragging = false
+                    slotView.addGestureRecognizer(psyGestureRecognizeer)
+                    views.append(slotView)
+                }
+            }
+            for view in views {
+                contentView.addSubview(view as UIView)
+            }
+            controlSlots = views.map({(view) in
+                return view
+            })
+            setControlAvailability()
+        }
+        else {
+            guard let controlView = controlSlots.first else {
                 return
             }
-            let begin: Int? = slots.index{ $0.begin == startTime }
-            let end: Int? = slots.index{ $0.begin == endTime }
-            if end != nil && begin != nil {
-                let slotView = SlotControlView(begin: CGFloat(begin!), slot: CGFloat(end!) - CGFloat(begin!), width: width, height: contentView.frame.size.height - 1, type: .control)
-                slotView.enableLeft(seperator: true, handle: true)
-                slotView.enableRight(seperator: true, handle: true)
-                let psyGestureRecognizeer = PSYSlotGestureRecognizer(target: self, action: #selector(dragRecognized))
-                psyGestureRecognizeer.allowHorizontalScrolling = allowHorizontalScrolling
-                psyGestureRecognizeer.allowVerticalScrolling = allowVerticalScrolling
-                psyGestureRecognizeer.allowTopBorderDragging = false
-                psyGestureRecognizeer.allowBottomBorderDragging = false
-                slotView.addGestureRecognizer(psyGestureRecognizeer)
-                enableTap()
-                views.append(slotView)
-            }
+            var newFrame = controlView.frame
+            newFrame.size.height = contentView.frame.size.height - 1
+            controlView.frame = newFrame
+            controlView.setNeedsDisplay()
         }
-        for subviews in contentView.subviews {
-            if subviews.tag == SlotViewType.control.rawValue {
-                subviews.removeFromSuperview()
-            }
-        }
-        for view in views {
-            contentView.addSubview(view as UIView)
-        }
-        controlSlots = views.map({(view) in
-            return view
-        })
-        setControlAvailability()
     }
     
     func updatePastSlot(width:CGFloat) {
@@ -256,6 +256,10 @@ class ViewController: UIViewController {
         pastSlots = views.map({(view) in
             return view 
         })
+        guard let controlView = controlSlots.first else {
+            return
+        }
+        contentView.bringSubview(toFront: controlView)
     }
     
     func updateTakenViews(width: CGFloat) {
@@ -295,6 +299,10 @@ class ViewController: UIViewController {
         takenSlots = views.map({(view) in
             return view
         })
+        guard let controlView = controlSlots.first else {
+            return
+        }
+        contentView.bringSubview(toFront: controlView)
     }
 
     func dragRecognized(recognizer: PSYSlotGestureRecognizer) {
@@ -412,7 +420,6 @@ class ViewController: UIViewController {
         newFrame.size.width = newFrame.size.width - 5
         return (takenSlots.filter{ $0.frame.intersects(newFrame) }.count > 0 || pastSlots.filter{ $0.frame.intersects(newFrame) }.count > 0 ) ? true : false
     }
-
     
     override func didReceiveMemoryWarning() {
         

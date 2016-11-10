@@ -33,6 +33,7 @@ class SlotControlView: SlotView {
     let separatorWidth: CGFloat = 2
 
     override init(begin: CGFloat, slot: CGFloat, width: CGFloat, height: CGFloat, type: SlotViewType) {
+        
         let x = CGFloat(begin * width)
         let width = CGFloat(slot * width)
         let frame = CGRect(x: x + 1, y: 0.0, width: width - 1, height: height)
@@ -40,6 +41,10 @@ class SlotControlView: SlotView {
         self.begin = begin
         self.slot = slot
         setType(type: type)
+    }
+    
+    deinit {
+        
     }
     
     override func draw(_ rect: CGRect) {

@@ -48,29 +48,24 @@ class SlotView: UIView {
     }
     
     func setType(type:SlotViewType) {
-        
+        tag = type.rawValue
         switch type {
         case .taken:
             let tileImage: UIImage = UIImage(named: "slash")!
             let bgColor = UIColor(patternImage: tileImage)
             backgroundColor = bgColor
-            tag = type.rawValue
         case .unavailable:
             let bgColor = UIColor(red: 225.0 / 255.0, green: 82.0 / 255.0, blue: 61.0 / 255.0, alpha: 1.0)
             self.backgroundColor = bgColor.withAlphaComponent(0.7)
-            tag = type.rawValue
         case .available:
             let bgColor = UIColor.clear
             self.backgroundColor = bgColor
-            tag = type.rawValue
         case .past:
             let bgColor = UIColor(red: 249.0 / 255.0, green: 250.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
             self.backgroundColor = bgColor
-            tag = type.rawValue
         case .control:
             let bgColor = UIColor(red: 62.0 / 255.0, green: 178.0 / 255.0, blue: 142.0 / 255.0, alpha: 1.0)
             self.backgroundColor = bgColor.withAlphaComponent(0.7)
-            tag = type.rawValue
         }
     }
     
